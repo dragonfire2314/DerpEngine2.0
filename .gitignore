@@ -1,0 +1,14 @@
+.vs/
+.vscode/
+CMakeFiles/
+out/
+
+
+*.vcxproj
+*.vcxproj.filers
+*.cmake
+*.a
+
+Makefile
+CMakeCache.txt
+
