@@ -8,6 +8,7 @@ out/
 *.vcxproj.filers
 *.cmake
 *.a
+*.dll
 
 Makefile
 CMakeCache.txt

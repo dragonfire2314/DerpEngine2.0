@@ -2,14 +2,33 @@ cmake_minimum_required (VERSION 3.8)
 
 project(DerpEngine VERSION 0.1.0 DESCRIPTION "DerpEngine interfaces with opengl for use with the derp software suite")
 
-add_library(${PROJECT_NAME} SHARED 
-    src/main.cpp
+# file(GLOB_RECURSE DERP_ENGINE_SOURCES src/*.cpp)
+
+add_library(${PROJECT_NAME} SHARED  
+    # ${DERP_ENGINE_SOURCES}
+    src/application.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER include/derpEngine.h)
 
-target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_include_directories(${PROJECT_NAME} PRIVATE src)
+target_include_directories(${PROJECT_NAME} 
+    PUBLIC include
+    PUBLIC ${CMAKE_SOURCE_DIR}/ext/glfw/include
+    PUBLIC ${CMAKE_SOURCE_DIR}/ext/glew/include
+)
+target_include_directories(${PROJECT_NAME}
+    PRIVATE src
+)
+
+target_link_directories(${PROJECT_NAME} 
+    PRIVATE ext/glfw
+    PRIVATE ext/glew
+)
+
+target_link_libraries(${PROJECT_NAME} 
+    glfw
+    glew
+)
 
 install(TARGETS ${PROJECT_NAME}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
