@@ -3,6 +3,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+
+#include <ecs/EntityManager.h>
+#include <ecs/ComponentManager.h>
+#include <ecs/SystemManager.h>
+#include <ecs/Components.h>
+
 namespace DERP {
 
     Application::Application()
@@ -53,6 +59,12 @@ namespace DERP {
 			GLFW INIT
 		*/
 		start();
+		/*
+			ECS INTI
+		*/
+		//ECS component init
+		CM::RegisterComponent<Transform>();
+		CM::RegisterComponent<Camera>();
 		/*
 			RENDERER
 		*/
